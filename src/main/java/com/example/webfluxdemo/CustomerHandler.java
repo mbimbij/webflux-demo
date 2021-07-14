@@ -18,4 +18,10 @@ public class CustomerHandler {
                 .contentType(MediaType.TEXT_EVENT_STREAM)
                 .body(dao.getCustomersStream(), CustomerDto.class);
     }
+
+    public Mono<ServerResponse> getCustomerById(ServerRequest serverRequest) {
+        Integer id = Integer.valueOf(serverRequest.pathVariable("id"));
+        return ServerResponse.ok()
+                .bodyValue(new CustomerDto(id, "customer-"+id));
+    }
 }

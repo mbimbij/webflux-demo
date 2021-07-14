@@ -16,6 +16,7 @@ public class RouterConfig {
     public RouterFunction<ServerResponse> routerFunction() {
         return RouterFunctions.route()
                 .GET("/router/customers", customerHandler::getCustomersStream)
+                .GET("/router/customers/{id}", customerHandler::getCustomerById)
                 .build();
     }
 }
